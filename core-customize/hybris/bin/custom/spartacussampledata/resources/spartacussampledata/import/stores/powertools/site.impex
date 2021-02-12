@@ -21,7 +21,7 @@ $customSiteMapUrls=/Open-Catalogue/c/1?q=%3AtopRated%3AallPromotions%3ABOGOFpowe
 $fullPathpowertools=https://localhost:4200
 $language=en
 
-$urlPatterns=(?i)^https?://[^/]+(/[^?]*)?\?(.*\&)?(site=$spaSiteUid)(|\&.*)$,(?i)^https?://$spaSiteUid\.[^/]+(|/.*|\?.*)$,(?i)^https?://api\.hybrisdev\.com(:[\d]+)?/rest/.*$,(?i)^https?://localhost(:[\d]+)?/rest/.*$,(?i)^https?://[^/]+/$spaSiteUid(|/.|?.)$
+$urlPatterns=(?i)^https?://[^/]+(/[^?]*)?\?(.*\&)?(site=$spaSiteUid)(|\&.*)$,(?i)^https?://$spaSiteUid\.[^/]+(|/.*|\?.*)$,(?i)^https?://api\.hybrisdev\.com(:[\d]+)?/rest/.*$,(?i)^https?://localhost(:[\d]+)?/rest/.*$,(?i)^https?://[^/]+/$spaSiteUid(|/.|\?.)$
 $urlEncodingAttributes=storefront,language,currency
 
 ### Site for spartacus
@@ -34,7 +34,7 @@ UPDATE CMSSite;uid[unique=true];name[lang=$language]
 UPDATE CMSSite;uid[unique=true];defaultPreviewCategory(code, $productCV);defaultPreviewProduct(code, $productCV);defaultPreviewCatalog(id)
 ;$spaSiteUid;1355;2116282;$productCatalog
 
-### Put spartacus into smart edit whitelist 
+### Put spartacus into smart edit whitelist
 INSERT_UPDATE SmartEditConfiguration;key[unique=true];value
 ;whiteListedStorefronts;"[""$fullPathpowertools""]"
 

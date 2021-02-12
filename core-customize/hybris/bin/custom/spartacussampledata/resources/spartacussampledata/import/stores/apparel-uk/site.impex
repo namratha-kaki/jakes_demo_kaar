@@ -2,7 +2,7 @@
 # [y] hybris Platform
 #
 # Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
-# The files in this addon are licensed under the Apache Software License, v. 2 
+# The files in this addon are licensed under the Apache Software License, v. 2
 # except as noted otherwise in the LICENSE file.
 # -----------------------------------------------------------------------
 #
@@ -22,7 +22,7 @@ $fullPathApparel=https://localhost:4200
 $language=en
 $currency=GBP
 
-$urlPatterns=(?i)^https?://[^/]+(/[^?]*)?\?(.*\&)?(site=$spaSiteUid)(|\&.*)$,(?i)^https?://$spaSiteUid\.[^/]+(|/.*|\?.*)$,(?i)^https?://api\.hybrisdev\.com(:[\d]+)?/rest/.*$,(?i)^https?://localhost(:[\d]+)?/rest/.*$,(?i)^https?://[^/]+/$spaSiteUid(|/.|?.)$
+$urlPatterns=(?i)^https?://[^/]+(/[^?]*)?\?(.*\&)?(site=$spaSiteUid)(|\&.*)$,(?i)^https?://$spaSiteUid\.[^/]+(|/.*|\?.*)$,(?i)^https?://api\.hybrisdev\.com(:[\d]+)?/rest/.*$,(?i)^https?://localhost(:[\d]+)?/rest/.*$,(?i)^https?://[^/]+/$spaSiteUid(|/.|\?.)$
 $urlEncodingAttributes=storefront,language,currency
 
 ### Site for spartacus

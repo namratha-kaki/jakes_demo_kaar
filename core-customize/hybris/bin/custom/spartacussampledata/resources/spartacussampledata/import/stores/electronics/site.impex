@@ -23,7 +23,7 @@ $language=en
 $currency=USD
 
 ### The last url pattern below is a wildcard for http(s)://localhost.* and should not be used in other sites than `electronics-spa`
-$urlPatterns=(?i)^https?://[^/]+(/[^?]*)?\?(.*\&)?(site=$spaSiteUid)(|\&.*)$,(?i)^https?://$spaSiteUid\.[^/]+(|/.*|\?.*)$,(?i)^https?://api\.hybrisdev\.com(:[\d]+)?/rest/.*$,(?i)^https?://localhost(:[\d]+)?/rest/.*$,(?i)^https?://localhost(:[\d]+)?(|/.*|\?.*)$,(?i)^https?://[^/]+/$spaSiteUid(|/.|?.)$
+$urlPatterns=(?i)^https?://[^/]+(/[^?]*)?\?(.*\&)?(site=$spaSiteUid)(|\&.*)$,(?i)^https?://$spaSiteUid\.[^/]+(|/.*|\?.*)$,(?i)^https?://api\.hybrisdev\.com(:[\d]+)?/rest/.*$,(?i)^https?://localhost(:[\d]+)?/rest/.*$,(?i)^https?://localhost(:[\d]+)?(|/.*|\?.*)$,(?i)^https?://[^/]+/$spaSiteUid(|/.|\?.)$
 $urlEncodingAttributes=storefront,language,currency
 
 ### Site for spartacus
@@ -36,7 +36,7 @@ UPDATE CMSSite;uid[unique=true];name[lang=$language]
 UPDATE CMSSite;uid[unique=true];defaultPreviewCategory(code, $productCV);defaultPreviewProduct(code, $productCV);defaultPreviewCatalog(id)
 ;$spaSiteUid;575;2053367;$productCatalog
 
-### Put spartacus into smart edit whitelist 
+### Put spartacus into smart edit whitelist
 INSERT_UPDATE SmartEditConfiguration;key[unique=true];value
 ;whiteListedStorefronts;"[""$fullPathElectronics""]"
 
