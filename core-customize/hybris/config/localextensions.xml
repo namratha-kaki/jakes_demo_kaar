@@ -42,8 +42,8 @@
     <extension name='b2bcommerce' />
     <extension name='b2bcommercebackoffice' />
     <extension name='b2bcommercefacades' />
-    <extension name='apparelstore' />
-    <extension name='electronicsstore' />
+    <!-- <extension name='apparelstore' /> -->
+    <!-- <extension name='electronicsstore' /> -->
     <extension name='captchaaddon' />
     <extension name='multicountrysampledataaddon' />
     <extension name='wishlist' />
