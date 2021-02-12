@@ -32,7 +32,7 @@ else {
       backend: occConfig.backend,
       context: {
         urlParameters: ['baseSite', 'language', 'currency'],
-        baseSite: ['electronics-spa'],
+        baseSite: ['powertools-spa'],
         currency: ['USD', 'GBP',]
       },
       i18n: {
