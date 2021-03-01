@@ -3,10 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  occBaseUrl:
-    'https://localhost:9002',
-  prefix: '/occ/v2/' 
+  production: false
 };
 
 /*
