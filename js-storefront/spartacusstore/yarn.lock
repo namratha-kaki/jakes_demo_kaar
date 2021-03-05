@@ -1400,17 +1400,24 @@
     semver "7.3.2"
     semver-intersect "1.4.0"
 
-"@spartacus/assets@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@spartacus/assets/-/assets-3.0.0.tgz#c8d138fe7519b8e43e8185fbb9b7df7c98044f5e"
-  integrity sha512-oPtK/dXsOsIl7peRGrXV7WofDHq7sDoOj5o+HvITDRKp7TNVqoMJFR03LhuVx3D3PhfpqMGEOwZbYazt5LH8pQ==
+"@spartacus/assets@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@spartacus/assets/-/assets-3.1.0.tgz#0bd637ec552d614777700583d93e8138aaeceae0"
+  integrity sha512-heTmbhnrNx4l6j61wSfubu3EdZyYCkUciIYxtxoT3kZCnCdQfz0t5J0z8KnuC9ZvEXmLS0aOVn4jB8joeu294g==
   dependencies:
     tslib "^2.0.0"
 
-"@spartacus/core@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@spartacus/core/-/core-3.0.0.tgz#1daeb838343995f80d7f612783899579e190fe20"
-  integrity sha512-zt8jiw/59Nn//9MnrYX10WNa6uil5u3th8zuxcfjOkwe05zt+Io1Zj6dzUyNwqo+fWJKoQzBPEWMFFIMftWcLQ==
+"@spartacus/core@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@spartacus/core/-/core-3.1.0.tgz#c124825d57673ee5fc2cc77f5d8363d208104c9f"
+  integrity sha512-ysPZrFs8x5XcQjv1F24xey+X6YBJm6axjb8Jr+TL2dRHy7GZhWp4xP7o4BiNl71qb3YX+BfyQ2fkb0QccqdsGw==
+  dependencies:
+    tslib "^2.0.0"
+
+"@spartacus/organization@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@spartacus/organization/-/organization-3.1.0.tgz#07f777416ec58368d573c65eaa75a4cb304d9bd6"
+  integrity sha512-c01jnhRLPqYhdwcFYt0Fg1pmBT6QLpg9unWN0AqzbNmOVRRDE6O0B8bXNwaHWsLHW3C+0tDh3QyhQ6h3/1yGJg==
   dependencies:
     tslib "^2.0.0"
 
@@ -1422,27 +1429,27 @@
     "@angular/localize" "^10.1.0"
     "@nguniversal/express-engine" "^10.1.0"
 
-"@spartacus/setup@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@spartacus/setup/-/setup-3.0.0.tgz#6c1b1c527d5d0f9b582f5412fc011472bb172d94"
-  integrity sha512-yNamiblklqRWFkkmX2WqfogkQmAhJFR9hUheTLXC+2YIy9ODNrdbLqDttTvgOD35XJLMnlqV2ouihez1SFvR8g==
+"@spartacus/setup@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@spartacus/setup/-/setup-3.1.0.tgz#cd4f5db225bb46d8210332989072b70e3c09b3c8"
+  integrity sha512-9krudYkLgtR6x+uxMi6yW5CDAbT7lBpXujjvqt0Hb6Vv8jA9n+NOvNdYeboTYYOnvcdOLRAGHN/eFO6hXpXztg==
   dependencies:
     tslib "^2.0.0"
   optionalDependencies:
     "@nguniversal/express-engine" "^10.1.0"
     express "^4.15.0"
 
-"@spartacus/storefront@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@spartacus/storefront/-/storefront-3.0.0.tgz#59db776299d3833a86176ff4f48036938d5558be"
-  integrity sha512-XPr2DvPdBFnRqmVSbF/1MDIiIjJHumDxVe4wbToB16jdPsdjymg5vcDhWgcRSfKtNcrsUL0UpKaftX14qIuEJw==
+"@spartacus/storefront@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@spartacus/storefront/-/storefront-3.1.0.tgz#503893ad96380c580f7fda6db557b4f046fb4068"
+  integrity sha512-P9SOjWoZ+FITaRPjZ59uH8bIK7uVWCl7H1BgxdG+igyHt37zRGTZGzvPymROzoxzn+MtguNQqOMQPrx72Ubw4A==
   dependencies:
     tslib "^2.0.0"
 
-"@spartacus/styles@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@spartacus/styles/-/styles-3.0.0.tgz#ad10f51fd0c3bde57e24000c1ddc1364d59ec0e7"
-  integrity sha512-jAwUIxI9mo/BbZPxFPJQLFUux858d2SkVjZIt2iXfrmpUb+z1vKnBVjSmpAjWwxwl4ekJoHCEOODDnDpoFzrzw==
+"@spartacus/styles@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@spartacus/styles/-/styles-3.1.0.tgz#6dac6682d5684e1e411d0a5bb4dab0149c4df7a9"
+  integrity sha512-dWwIS7Cca4V30+BSDLWtnetZgUPeXzxh1UAeT8BRk4tqszhqYqooYNkMRZyl664YzwjYMdvD2ZBimM/kSebbFA==
   dependencies:
     hamburgers "^1.1.3"
 

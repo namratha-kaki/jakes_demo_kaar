@@ -3,7 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { translations, translationChunksConfig } from '@spartacus/assets';
-import { B2cStorefrontModule } from '@spartacus/storefront';
+import { B2bStorefrontModule, defaultB2bOccConfig } from '@spartacus/setup';
+import { provideDefaultConfig } from '@spartacus/core';
+import { AdministrationRootModule } from '@spartacus/organization/administration/root';
+import { provideConfig } from '@spartacus/core';
+import { organizationTranslations } from '@spartacus/organization/administration/assets';
+import { organizationTranslationChunksConfig } from '@spartacus/organization/administration/assets';
+import { OrderApprovalRootModule } from '@spartacus/organization/order-approval/root';
+import { orderApprovalTranslations } from '@spartacus/organization/order-approval/assets';
+import { orderApprovalTranslationChunksConfig } from '@spartacus/organization/order-approval/assets';
 import { OccConfig } from '@spartacus/core';
 import { environment } from './../environments/environment';
 
@@ -28,12 +36,25 @@ else {
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    B2cStorefrontModule.withConfig({
+    B2bStorefrontModule.withConfig({
       backend: occConfig.backend,
+      featureModules: {
+        organizationOrderApproval: {
+        module: () => import('@spartacus/organization/order-approval').then(
+          (m) => m.OrderApprovalModule
+        ),
+        },
+        organizationAdministration: {
+          module: () => import('@spartacus/organization/administration').then(
+          (m) => m.AdministrationModule
+        ),
+        },
+      },
       context: {
         urlParameters: ['baseSite', 'language', 'currency'],
         baseSite: ['powertools-spa'],
-        currency: ['USD', 'GBP',]
+        currency: ['USD'],
+        language: ['en'],
       },
       i18n: {
         resources: translations,
@@ -41,12 +62,27 @@ else {
         fallbackLang: 'en'
       },
       features: {
-        level: '2.0'
+        level: '3.1'
       }
     }),
-    BrowserTransferStateModule
+    BrowserTransferStateModule,
+    AdministrationRootModule,
+    OrderApprovalRootModule
   ],
-  providers: [],
+  providers: [provideDefaultConfig(defaultB2bOccConfig),
+    provideConfig({
+      i18n: {
+        resources: organizationTranslations,
+        chunks: organizationTranslationChunksConfig,
+      },
+    }),
+    
+    provideConfig({
+      i18n: {
+        resources: orderApprovalTranslations,
+        chunks: orderApprovalTranslationChunksConfig,
+      },
+    })],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
