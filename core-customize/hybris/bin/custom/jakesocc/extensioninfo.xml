@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+
+    <extension abstractclassprefix="Generated" classprefix="Jakesocc" managername="JakesoccManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="jakesocc">
+
+        <requires-extension name="commercewebservices"/>
+        <requires-extension name="jakesfacades"/>
+        <requires-extension name="b2bocc"/>
+
+        <coremodule generated="true" manager="com.jakes.jakesocc.jalo.JakesoccManager" packageroot="com.jakes.jakesocc"/>
+
+    </extension>
+
+</extensioninfo>

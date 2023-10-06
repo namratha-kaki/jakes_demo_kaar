@@ -1,0 +1,12 @@
+#
+# Import the Jakes BaseStore
+#
+# Localization en
+#
+
+$lang=en
+
+$storeUid=jakes
+
+UPDATE BaseStore;uid[unique=true];name[lang=$lang]
+;$storeUid;"Jakes Store";

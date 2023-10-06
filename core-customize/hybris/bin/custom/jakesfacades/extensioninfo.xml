@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+
+    <extension abstractclassprefix="Generated" classprefix="Jakesfacades" managername="JakesfacadesManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="jakesfacades">
+
+        <requires-extension name="jakescore"/>
+        <requires-extension name="b2bcommercefacades"/>
+        <requires-extension name="b2bacceleratorfacades"/>
+
+        <coremodule generated="true" manager="com.jakes.jakesfacades.jalo.JakesfacadesManager" packageroot="com.jakes.jakesfacades"/>
+
+    </extension>
+
+</extensioninfo>

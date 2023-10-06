@@ -1,0 +1,2 @@
+## messageSource=classpath:/jakesstore/messages/email-orderApprovalRejectionSubject_$lang.properties
+${ctx.messages.getMessage('emailSubject', ${ctx.order.code})}

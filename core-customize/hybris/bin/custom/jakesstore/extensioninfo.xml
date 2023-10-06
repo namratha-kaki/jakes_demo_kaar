@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+
+    <extension abstractclassprefix="Generated" classprefix="Jakesstore" managername="JakesstoreManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="jakesstore">
+
+        <requires-extension name="b2bacceleratorservices"/>
+        <requires-extension name="jakescore"/>
+
+        <coremodule generated="true" manager="com.jakes.jakesstore.jalo.JakesstoreManager" packageroot="com.jakes.jakesstore"/>
+
+    </extension>
+
+</extensioninfo>

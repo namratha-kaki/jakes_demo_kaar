@@ -1,0 +1,10 @@
+#
+# Import Themes
+#
+
+# Language
+$lang=en
+
+# SiteTheme
+UPDATE SiteTheme;code[unique=true];name[lang=$lang]
+;jakes;"Jakes"

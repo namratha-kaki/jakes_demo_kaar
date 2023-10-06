@@ -1,0 +1,63 @@
+#
+# Import CMS content for the Jakes site
+#
+
+$contentCatalog=jakesContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+# Language
+$lang=en
+
+
+# Content Pages
+    
+UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;account;"My Account"
+;;address-book;"Address Book"
+;;cartPage;"Your Shopping Cart"
+;;checkout-login;"Proceed to Checkout"
+;;faq;"Frequently Asked Questions"
+;;homepage;"Homepage"
+;;login;"Login"
+;;multiStepCheckoutSummaryPage;"Checkout"
+;;notFound;"Not Found"
+;;order;"Order Details"
+;;orderConfirmationPage;"Order Confirmation"
+;;orders;"Order History"
+;;payment-details;"Payment Details"
+;;profile;"Profile"
+;;search;"Search Results List Page"
+;;searchAdvancedEmpty;"Order Forms"
+;;searchEmpty;"No Results"
+;;searchGrid;"Search Results Grid Page"
+;;termsAndConditions;"Terms and Conditions"
+;;update-email;"Update Email"
+;;update-profile;"Update Personal Details"
+;;updatePassword;"Update Password"
+;;Checkout;"Checkout"
+;;CheckoutDeliveryAddress;"Checkout Delivery Address"
+;;CheckoutDeliveryMode;"Checkout Delivery Mode"
+;;CheckoutPaymentDetails;"Checkout Payment Details"
+;;CheckoutReviewOrder;"Checkout Review Order"
+;;contactUs;"Contact Us"
+;;forgotPassword;"Reset Password"
+;;help;"Help"
+;;register;"Create an Account"
+;;resetPassword;"Reset Password"
+;;sale;"Sale"
+
+    
+# Category Pages
+    
+UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;category;"Default Category Page"
+;;productGrid;"Product Grid"
+;;productList;"Product List"
+
+    
+# Product Pages
+    
+UPDATE ProductPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;productDetails;"Product Details"
+
+    

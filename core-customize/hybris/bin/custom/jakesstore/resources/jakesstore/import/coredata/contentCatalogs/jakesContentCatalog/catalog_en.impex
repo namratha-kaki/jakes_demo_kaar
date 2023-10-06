@@ -1,0 +1,14 @@
+#
+# Import the Jakes Content Catalog
+#
+
+# Language
+$lang=en
+
+# Create Content Catalog
+UPDATE ContentCatalog;id[unique=true];name[lang=$lang]
+;jakesContentCatalog;"Jakes Content Catalog"
+
+INSERT_UPDATE CmsSiteContext;code[unique=true];name[lang=$lang]
+;LANGUAGE;"language"
+;CURRENCY;"currency"
