@@ -6,6 +6,10 @@
   * In the git repository directory, custom extensions are located in `/core-customize/hybris/bin/custom`. Create a symbolic link for `{git repo directory}/core-customize/hybris/bin/custom` to a corresponding folder in `{SAP Commerce instance directory}/hybris/bin`.
 * Setup config files.
   * Create symbolic links for `{git repo directory}/core-customize/hybris/config/local.properties` and `{git repo directory}/core-customize/hybris/config/localextensions.xml` to the corresponding files in `{SAP Commerce instance directory}/hybris/config`
+# Symbolic link generation for custom folder :
+* ln -s /home/dsg/workspaces/jakesptools/jakes-sapcommerce/core-customize/hybris/bin/custom/jakesbackoffice /home/dsg/workspaces/jakesptools/commerce/hybris/bin/custom/jakesbackoffice
+# Symbolic link generation for config folder :
+* ln -s ~/home/dsg/workspaces/jakesptools/jakes-sapcommerce/core-customize/hybris/config/ ~/home/dsg/workspaces/jakesptools/commerce/hybris
 * Build and Initialize SAP Commerce as usual.
 
 ## For Composable Storefront (Spartacus)
