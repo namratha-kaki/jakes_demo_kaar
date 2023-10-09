@@ -1,0 +1,2 @@
+## messageSource=classpath:/jakesstore/messages/email-registrationApproved_$lang.properties
+${ctx.messages.subject}

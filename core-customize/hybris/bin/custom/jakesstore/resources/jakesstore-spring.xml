@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="jakesstoreSystemSetup" class="com.jakes.jakesstore.setup.JakesstoreSystemSetup" parent="abstractCoreSystemSetup">
+        <property name="coreDataImportService" ref="coreDataImportService"/>
+        <property name="jakesSampleDataImportService" ref="jakesSampleDataImportService"/>
+    </bean>
+
+    <bean id="jakesSampleDataImportService" class="com.jakes.jakesstore.service.dataimport.impl.JakesSampleDataImportService" parent="sampleDataImportService">
+    </bean>
+
+    <bean id="jakesCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+        <property name="categorySource" ref="jakesCategorySource"/>
+    </bean>
+    <bean id="jakesBrandCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+        <property name="categorySource" ref="jakesBrandCategorySource"/>
+    </bean>
+    <bean id="jakesVariantCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+        <property name="categorySource" ref="jakesVariantCategorySource"/>
+    </bean>
+
+    <bean id="jakesCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">
+        <property name="categorySource" ref="jakesCategorySource"/>
+    </bean>
+
+    <bean id="jakesBrandCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">
+        <property name="categorySource" ref="jakesBrandCategorySource"/>
+    </bean>
+
+    <bean id="jakesCategorySource" parent="defaultCategorySource">
+        <property name="rootCategory" value="1"/> <!-- '1' is the root icecat category -->
+    </bean>
+    <bean id="jakesVariantCategorySource" parent="variantCategorySource"/>
+
+    <bean id="jakesBrandCategorySource" parent="defaultCategorySource">
+        <property name="rootCategory" value="brands"/> <!-- 'brands' is the root of the brands hierarchy -->
+    </bean>
+
+</beans>
+

@@ -1,0 +1,14 @@
+#
+# Import the Product Catalog and Classification Catalog
+#
+# Localization en
+#
+
+$lang=en
+
+$productCatalog=jakesProductCatalog
+$classificationCatalog=JakesClassification
+
+UPDATE Catalog;id[unique=true];name[lang=$lang]
+;$classificationCatalog;"Jakes Classification";
+;$productCatalog;"Jakes Product Catalog";

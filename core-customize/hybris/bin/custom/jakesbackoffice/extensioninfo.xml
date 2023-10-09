@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+
+    <extension abstractclassprefix="Generated" classprefix="Jakesbackoffice" name="jakesbackoffice">
+
+        <requires-extension name="backoffice"/>
+        <requires-extension name="jakescore"/>
+        <requires-extension name="pcmbackoffice"/>
+
+        <coremodule generated="true" manager="com.jakes.jakesbackoffice.jalo.JakesbackofficeManager" packageroot="com.jakes.jakesbackoffice"/>
+
+        <meta key="backoffice-module" value="true"/>
+
+    </extension>
+
+</extensioninfo>

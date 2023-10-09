@@ -1,0 +1,32 @@
+INSERT_UPDATE OAuthClientDetails;clientId[unique=true];resourceIds;scope;authorizedGrantTypes;authorities;clientSecret;registeredRedirectUri
+;client-side;hybris;basic;implicit,client_credentials;ROLE_CLIENT;secret;http://localhost:9001/authorizationserver/oauth2_implicit_callback;
+;mobile_android;hybris;basic;authorization_code,refresh_token,password,client_credentials;ROLE_CLIENT;secret;http://localhost:9001/authorizationserver/oauth2_callback;
+
+# Vendor
+INSERT_UPDATE Vendor;code[unique=true];name
+;default;Default Vendor
+;jakes;Jakes
+
+INSERT Warehouse;code[unique=true];name;vendor(code)[default=default, forceWrite=true];default[default=true, forceWrite=true]
+"#% beforeEach:
+import de.hybris.platform.core.Registry;
+import de.hybris.platform.ordersplitting.model.WarehouseModel;
+String warehouseCode = line.get(Integer.valueOf(1));
+WarehouseModel warehouse;
+try
+{
+    warehouse = Registry.getApplicationContext().getBean(""warehouseService"").getWarehouseForCode(warehouseCode);
+}
+catch (Exception e)
+{
+    warehouse = null;
+}
+if (warehouse != null)
+{
+    line.clear();
+}"
+;default;Default Warehouse;
+;bc_warehouse_s;;jakes
+;bc_warehouse_e;;jakes
+;bc_warehouse_w;;jakes
+;bc_warehouse_n;;jakes
