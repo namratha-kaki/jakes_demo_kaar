@@ -3,7 +3,7 @@
 <extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
            
     
-    <extension abstractclassprefix="Generated" classprefix="Jakescore" jaloLogicFree="true" managername="JakescoreManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="jakescore">
+    <extension abstractclassprefix="Generated" classprefix="Jakescore" managername="JakescoreManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="jakescore">
 
 	<requires-extension name="b2bacceleratorservices"/>
                   
