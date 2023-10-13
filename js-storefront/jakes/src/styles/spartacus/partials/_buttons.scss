@@ -6,29 +6,29 @@
     transition: all 0.3s;
     border-radius: 1rem;
     text-decoration: none;
-    color: $purple;
+    color: $yellow;
     &.btn-primary {
         color: $white;
-        background-color: $purple;
-        border-color: $purple;
+        background-color: $yellow;
+        border-color: $yellow;
         &:hover, &.hover, &:active, &.active, &:focus, &.focus  {
-            background-color: $darkpurple;
-            border-color: $darkpurple;
+            background-color: $darkyellow;
+            border-color: $darkyellow;
         }
     }
     &.btn-outline-primary, &.btn-secondary {
-        border-color: $purple;
+        border-color: $yellow;
         &:hover, &.hover, &:focus, &.focus {
             box-shadow: none;
-            color: $darkpurple;
-            border-color: $darkpurple;
+            color: $darkyellow;
+            border-color: $darkyellow;
         }
     }
     &.btn-secondary {
         &:not(:disabled):not(.disabled):active, &:not(:disabled):not(.disabled).active {
             background-color: $white;
-            border-color: $darkpurple;
-            color: $darkpurple;
+            border-color: $darkyellow;
+            color: $darkyellow;
         }
     }
 }
@@ -40,20 +40,20 @@ button {
 }
 
 a {
-    color: $purple;
+    color: $yellow;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
     &:hover, &.hover {
-        color: $darkpurple;
+        color: $darkyellow;
         text-decoration: underline;
     }
     &.btn-link {
         font-size: 0.875rem;
-        color: $purple;
+        color: $yellow;
         text-decoration: underline;
         &:hover, &.hover {
-            color: $darkpurple;
+            color: $darkyellow;
         }
     }
 }
@@ -68,12 +68,12 @@ cx-link {
             transition: all 0.3s;
             border-radius: 16px;
             background-color: $white;
-            border-color: $purple;
-            color: $purple;
+            border-color: $yellow;
+            color: $yellow;
             text-decoration: none;
             &:hover {
-                color: $darkpurple;
-                border-color: $darkpurple;
+                color: $darkyellow;
+                border-color: $darkyellow;
             }
         }
     }
@@ -81,7 +81,7 @@ cx-link {
 
 cx-scroll-to-top {
     button {
-        background-color: $purple;
+        background-color: $yellow;
     }
 }
 
@@ -89,9 +89,9 @@ cx-scroll-to-top {
     font-size: 0.875rem;
     font-weight: 600;
     text-decoration: none;
-    color: $purple;
+    color: $yellow;
     &:hover {
         text-decoration: underline;
-        color: $darkpurple;
+        color: $darkyellow;
     }
 }
