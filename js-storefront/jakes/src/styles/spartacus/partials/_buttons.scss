@@ -1,0 +1,97 @@
+.btn {
+    font-size: 1rem;
+    font-weight: 700;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    border-radius: 1rem;
+    text-decoration: none;
+    color: $yellow;
+    &.btn-primary {
+        color: $white;
+        background-color: $yellow;
+        border-color: $yellow;
+        &:hover, &.hover, &:active, &.active, &:focus, &.focus  {
+            background-color: $darkyellow;
+            border-color: $darkyellow;
+        }
+    }
+    &.btn-outline-primary, &.btn-secondary {
+        border-color: $yellow;
+        &:hover, &.hover, &:focus, &.focus {
+            box-shadow: none;
+            color: $darkyellow;
+            border-color: $darkyellow;
+        }
+    }
+    &.btn-secondary {
+        &:not(:disabled):not(.disabled):active, &:not(:disabled):not(.disabled).active {
+            background-color: $white;
+            border-color: $darkyellow;
+            color: $darkyellow;
+        }
+    }
+}
+
+button {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+a {
+    color: $yellow;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    &:hover, &.hover {
+        color: $darkyellow;
+        text-decoration: underline;
+    }
+    &.btn-link {
+        font-size: 0.875rem;
+        color: $yellow;
+        text-decoration: underline;
+        &:hover, &.hover {
+            color: $darkyellow;
+        }
+    }
+}
+
+cx-link {
+    &.cx-organization-user-register-button {
+        a {
+            font-size: 1rem;
+            font-weight: 700;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            transition: all 0.3s;
+            border-radius: 16px;
+            background-color: $white;
+            border-color: $yellow;
+            color: $yellow;
+            text-decoration: none;
+            &:hover {
+                color: $darkyellow;
+                border-color: $darkyellow;
+            }
+        }
+    }
+}
+
+cx-scroll-to-top {
+    button {
+        background-color: $yellow;
+    }
+}
+
+.cx-action-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: $yellow;
+    &:hover {
+        text-decoration: underline;
+        color: $darkyellow;
+    }
+}

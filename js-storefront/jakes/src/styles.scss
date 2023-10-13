@@ -2,3 +2,17 @@
 
 @import 'styles-config';
 @import '@spartacus/styles/index';
+
+// Partials
+@import 'styles/spartacus/partials/variables';
+@import 'styles/spartacus/partials/breadcrumbs';
+@import 'styles/spartacus/partials/buttons';
+@import 'styles/spartacus/partials/cards';
+@import 'styles/spartacus/partials/footer';
+@import 'styles/spartacus/partials/fonts';
+@import 'styles/spartacus/partials/forms';
+@import 'styles/spartacus/partials/global';
+@import 'styles/spartacus/partials/header';
+@import 'styles/spartacus/partials/layout';
+@import 'styles/spartacus/partials/pagination';
+@import 'styles/spartacus/partials/tables';

@@ -1,0 +1,84 @@
+input {
+    &[type="text"], 
+    &[type="email"], 
+    &[type="password"], 
+    &[type="tel"] {
+        &::-webkit-input-placeholder { /* Edge */
+            color: $placeholder;
+        }
+    
+        &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color: $placeholder;
+        }
+    
+        &::placeholder {
+            color: $placeholder;
+        }
+    }
+
+    &.ng-invalid.ng-touched, 
+    &[type="checkbox"].ng-invalid.ng-dirty, 
+    &[type="checkbox"].ng-invalid.ng-touched, 
+    &[type="radio"].ng-invalid.ng-dirty, 
+    &[type="radio"].ng-invalid.ng-touched {
+        border-color: $border
+    }
+}
+
+.form-control {
+    color:  $darkblue;
+    border-radius: 1rem;
+    border-color: $border;
+    background-color: $whitesmoke;
+    &::-webkit-input-placeholder { /* Edge */
+        color: $placeholder;
+    }
+
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: $placeholder;
+    }
+
+    &::placeholder {
+        color: $placeholder;
+    }
+}
+
+textarea {
+    &.ng-invalid.ng-dirty, 
+    &.ng-invalid.ng-touched {
+        border-color: $border
+    }
+}
+
+.ng-select {
+    .ng-select-container {
+        color:  $darkblue;
+        border-radius: 1rem;
+        border-color: $border;
+        background-color: $whitesmoke;
+    }
+}
+
+cx-address-form {
+	form {
+		padding: 1.875rem!important;
+		background-color: $white!important;
+		border-radius: 1rem;
+		box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.1);
+	}
+}
+
+label .label-content{
+    color: #000000;
+    text-transform: capitalize;
+}
+cx-form-errors{
+    p{
+        font-size: 14px;
+        margin: 6px 0;
+        padding-inline-start: 25px;
+        position: relative;
+        word-break: break-word;
+        color: #D8000C;
+    }
+}

@@ -1,0 +1,28 @@
+cx-breadcrumb {
+	margin: 0 auto;
+	padding: 0 10px;
+	max-width: 1140px;
+	background-color: transparent;
+	nav {
+		ol {
+			li {
+				a {
+					font-size: 0.875rem;
+					font-weight: 600;
+					padding: 0 10px;
+					color: $black;	
+				}
+				&:first-child {
+					a {
+						padding-left: 0;
+					}
+				}
+			}
+		}
+	}
+	h1 {
+		font-size: 1.9rem;
+		font-weight: 700;
+		color: $black;	
+	}
+}

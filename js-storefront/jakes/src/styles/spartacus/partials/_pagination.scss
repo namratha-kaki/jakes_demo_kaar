@@ -1,0 +1,21 @@
+cx-pagination {
+    a {
+        background-color: $white;
+        border-color: $border;
+        color: $gray;
+        font-size: 0.875rem;
+        &:first-child {
+            border-top-left-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+        }
+        &:last-child {
+            border-inline-end: solid 1px $border;
+            border-top-right-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+        }
+        &.current {
+            background-color: $yellow;
+            border-color: $border;
+        }
+    }
+}
