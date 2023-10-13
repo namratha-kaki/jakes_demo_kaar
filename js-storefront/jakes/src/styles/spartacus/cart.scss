@@ -1,2 +1,12 @@
 @import "../../styles-config";
 @import "@spartacus/cart";
+
+cx-mini-cart {
+    a {
+        color: #6A6A6A;;
+        background: none;
+    }
+    a:hover{
+        color: rgb(236, 133, 35);
+    }
+}

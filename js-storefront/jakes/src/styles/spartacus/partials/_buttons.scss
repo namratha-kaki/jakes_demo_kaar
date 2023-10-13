@@ -1,0 +1,97 @@
+.btn {
+    font-size: 1rem;
+    font-weight: 700;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    border-radius: 1rem;
+    text-decoration: none;
+    color: $purple;
+    &.btn-primary {
+        color: $white;
+        background-color: $purple;
+        border-color: $purple;
+        &:hover, &.hover, &:active, &.active, &:focus, &.focus  {
+            background-color: $darkpurple;
+            border-color: $darkpurple;
+        }
+    }
+    &.btn-outline-primary, &.btn-secondary {
+        border-color: $purple;
+        &:hover, &.hover, &:focus, &.focus {
+            box-shadow: none;
+            color: $darkpurple;
+            border-color: $darkpurple;
+        }
+    }
+    &.btn-secondary {
+        &:not(:disabled):not(.disabled):active, &:not(:disabled):not(.disabled).active {
+            background-color: $white;
+            border-color: $darkpurple;
+            color: $darkpurple;
+        }
+    }
+}
+
+button {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+a {
+    color: $purple;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    &:hover, &.hover {
+        color: $darkpurple;
+        text-decoration: underline;
+    }
+    &.btn-link {
+        font-size: 0.875rem;
+        color: $purple;
+        text-decoration: underline;
+        &:hover, &.hover {
+            color: $darkpurple;
+        }
+    }
+}
+
+cx-link {
+    &.cx-organization-user-register-button {
+        a {
+            font-size: 1rem;
+            font-weight: 700;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            transition: all 0.3s;
+            border-radius: 16px;
+            background-color: $white;
+            border-color: $purple;
+            color: $purple;
+            text-decoration: none;
+            &:hover {
+                color: $darkpurple;
+                border-color: $darkpurple;
+            }
+        }
+    }
+}
+
+cx-scroll-to-top {
+    button {
+        background-color: $purple;
+    }
+}
+
+.cx-action-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: $purple;
+    &:hover {
+        text-decoration: underline;
+        color: $darkpurple;
+    }
+}
