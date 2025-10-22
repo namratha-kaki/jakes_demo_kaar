@@ -216,6 +216,7 @@
     <extension name='jakesfacades' />
     <extension name='jakesocc' />
     <extension name='jakesstore' />
+    <extension name='jakesoccv1' />
 
   </extensions>
 </hybrisconfig>

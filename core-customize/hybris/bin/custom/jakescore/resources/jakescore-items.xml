@@ -3,6 +3,25 @@
 <items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xsi:noNamespaceSchemaLocation="items.xsd">
 	<itemtypes>
+
+		<itemtype code="ToolsItem" extends="GenericItem" autocreate="true" generate="true">
+			<deployment table="ToolsItem" typecode="11115"/>
+			<attributes>
+				<attribute qualifier="code" type="java.lang.String">
+					<modifiers read="true" write="true" optional="false" initial="true" unique="true"/>
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="name" type="java.lang.String">
+					<modifiers read="true" write="true" optional="true"/>
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="description" type="java.lang.String">
+					<modifiers read="true" write="true" optional="true"/>
+					<persistence type="property"/>
+				</attribute>
+
+			</attributes>
+		</itemtype>
 	</itemtypes>
 </items>
 

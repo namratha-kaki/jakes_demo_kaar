@@ -7,6 +7,7 @@
         <requires-extension name="jakescore"/>
         <requires-extension name="b2bcommercefacades"/>
         <requires-extension name="b2bacceleratorfacades"/>
+        <requires-extension name="webservicescommons"/>
 
         <coremodule generated="true" manager="com.jakes.jakesfacades.jalo.JakesfacadesManager" packageroot="com.jakes.jakesfacades"/>
 

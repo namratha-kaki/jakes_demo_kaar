@@ -88,3 +88,5 @@ beans.xsd
 items.xsd
 classes/
 eclipsebin/
+
+js-storefront/jakes/.angular/cache/

@@ -8,5 +8,13 @@
            http://www.springframework.org/schema/aop
            http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+    <bean id="toolsDao" class="com.jakes.jakescore.Dao.DefaultToolsDao">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+    <bean id="toolsService" class="com.jakes.jakescore.service.impl.DefaultToolsService">
+        <property name="toolsDao" ref="toolsDao"/>
+    </bean>
+
+
 </beans>
 
