@@ -1,0 +1,14 @@
+$contentCatalog = jakesContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$lang=en
+INSERT_UPDATE ContentPage; uid[unique=true]; name; label;$contentCV
+                         ; toolsPage ; Tools Page ; /tools ;
+
+INSERT_UPDATE CMSParagraphComponent; uid[unique=true]; name; content[lang=$lang]; $contentCV
+                                   ; toolsParagraphComponent ; Tools List Component ; Placeholder content ;
+
+INSERT_UPDATE ContentSlot; uid[unique=true]; name; $contentCV
+                         ; Section1 ; Section 1 ;
+                         ; Section2A ; Section 2A ;
+                         ; Section2B ; Section 2B ;
+                         ; Section3 ; Section 3 ;

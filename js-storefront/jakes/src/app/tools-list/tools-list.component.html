@@ -1,0 +1,6 @@
+<h2>Tools List</h2>
+<ul>
+  <li *ngFor="let tool of tools$ | async">
+    <strong>{{tool.name}}</strong> - {{tool.description}}
+  </li>
+</ul>

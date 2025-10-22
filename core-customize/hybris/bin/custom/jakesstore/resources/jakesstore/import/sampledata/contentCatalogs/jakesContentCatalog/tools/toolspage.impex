@@ -1,0 +1,22 @@
+
+$contentCatalog = jakesContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Online])[default=$contentCatalog:Online]
+
+
+INSERT_UPDATE ContentPage; uid[unique=true]; masterTemplate(uid,$contentCV); defaultPage; $contentCV
+                         ; toolsPage ; ContentPage1Template ; true ;
+
+INSERT_UPDATE CMSParagraphComponent; uid[unique=true]; visible; $contentCV
+                                   ; toolsParagraphComponent ; true ;
+
+INSERT_UPDATE ContentSlot; uid[unique=true]; $contentCV
+                         ; Section1 ;
+                         ; Section2A ;
+                         ; Section2B ;
+                         ; Section3 ;
+
+INSERT_UPDATE ContentSlotForPage; uid[unique=true]; page(uid,$contentCV); position; $contentCV; contentSlot(uid,$contentCV)
+                                ; tools-section1 ; toolsPage ; Section1 ;; Section1
+                                ; tools-section2a ; toolsPage ; Section2A ;; Section2A
+                                ; tools-section2b ; toolsPage ; Section2B ;; Section2B
+                                ; tools-section3 ; toolsPage ; Section3 ;; Section3
