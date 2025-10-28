@@ -1,5 +1,5 @@
 {
-  "/jakesoccv1/sample": {
+  "/demojakesocc/sample": {
     "target": "https://localhost:9002",
     "secure": false,
     "changeOrigin": true,

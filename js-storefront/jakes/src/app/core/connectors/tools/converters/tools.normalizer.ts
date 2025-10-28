@@ -13,6 +13,7 @@ export class ToolsNormalizer implements Converter<any, ToolData> {
     target.code = source.code;
     target.name = source.name;
     target.description = source.description;
+    target.releaseDate = source.releaseDate;
     return target;
   }
 }

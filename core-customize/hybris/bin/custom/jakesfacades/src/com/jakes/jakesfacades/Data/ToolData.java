@@ -1,9 +1,20 @@
 package com.jakes.jakesfacades.Data;
 
+import java.util.Date;
+
 public class ToolData {
     private String code;
     private String name;
     private String description;
+    private Date releaseDate;
+
+    public Date getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
+    }
 
     public String getCode() {
         return code;
@@ -28,6 +39,6 @@ public class ToolData {
     public void setDescription(String description) {
         this.description = description;
     }
-// getters and setters
+
 }
 

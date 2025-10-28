@@ -26,7 +26,7 @@ import java.util.List;
 //}
 
 @RestController
-@RequestMapping(value = "/tools", produces = "application/json")
+@RequestMapping(value = "/sample1", produces = "application/json")
 public class SampleController {
 
 	@Resource(name = "toolsFacade")

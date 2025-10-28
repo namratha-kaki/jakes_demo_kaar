@@ -1,0 +1,118 @@
+
+$primary: #0078d7;
+$primary-dark: #005fa3;
+$text-color: #333;
+$border-color: #e5e7eb;
+$bg-light: #f4f6f8;
+$hover-bg: #f9fbfd;
+
+@mixin hover-lift {
+  transition: all 0.3s ease;
+  &:hover {
+    transform: translateY(-2px);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.years-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+
+  .year-btn {
+    background: $primary;
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba($primary, 0.3);
+    @include hover-lift;
+
+    &:hover {
+      background: $primary-dark;
+      box-shadow: 0 3px 6px rgba($primary, 0.4);
+    }
+
+    &.active {
+      background: $primary-dark;
+      box-shadow: 0 0 8px rgba($primary, 0.5);
+    }
+  }
+}
+
+.loading-text {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: $text-color;
+  margin-bottom: 1rem;
+}
+
+.tools-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+  th {
+    background-color: $bg-light;
+    color: $text-color;
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 15px;
+    font-size: 14px;
+    border-bottom: 2px solid $border-color;
+  }
+
+  td {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: $text-color;
+    border-bottom: 1px solid lighten($border-color, 5%);
+  }
+
+  tr:hover {
+    background-color: $hover-bg;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  input[type='date'] {
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 14px;
+    color: $text-color;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:focus {
+      border-color: $primary;
+      box-shadow: 0 0 5px rgba($primary, 0.3);
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+  .tools-table {
+    th,
+    td {
+      padding: 8px 10px;
+      font-size: 13px;
+    }
+  }
+
+  .year-btn {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+}

@@ -13,13 +13,15 @@ import { OccToolsAdapter } from './core/connectors/tools/occ-tools.adapter';
 import { TOOLS_NORMALIZER, ToolsNormalizer } from './core/connectors/tools/converters/tools.normalizer';
 import { ToolsListModule } from './tools-list/tools-list.module';
 import { toolsReducer } from './state/tools.reducer';
-import { ToolsEffects } from './state/tools.effeccts';
+import { ToolsEffects } from './state/tools.effects';
 import { ConfigModule } from '@spartacus/core';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToolsListComponent
+    ToolsListComponent,
+    
   ],
   imports: [
     BrowserModule,

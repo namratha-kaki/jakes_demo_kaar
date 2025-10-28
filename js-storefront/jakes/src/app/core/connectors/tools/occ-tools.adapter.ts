@@ -9,8 +9,8 @@ import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class OccToolsAdapter extends ToolsAdapter {
-  private baseUrl = '/jakesoccv1/sample';
-  private accessToken = 'Xb7-v45cqXM5hicejb-SXKZTqS8';
+  private baseUrl = '/demojakesocc/sample';
+  private accessToken = 'xYlchgoz5W43-_H4puGLKhFDL4g';
 
   constructor(private http: HttpClient, private converter: ConverterService) {
     super();
@@ -28,6 +28,17 @@ export class OccToolsAdapter extends ToolsAdapter {
           this.converter.convert(item, TOOLS_NORMALIZER)
         )
       )
+    );
+  }
+
+  getByYear(year: number): Observable<ToolData[]> {
+        const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.accessToken}`,
+      'Accept': 'application/json'
+    });
+    
+    return this.http.get<any[]>(`${this.baseUrl}/toolsByYear?year=${year}`, { headers }).pipe(
+      map(response => response.map(item => this.converter.convert(item, TOOLS_NORMALIZER)))
     );
   }
 }

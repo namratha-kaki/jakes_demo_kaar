@@ -19,6 +19,10 @@
 					<modifiers read="true" write="true" optional="true"/>
 					<persistence type="property"/>
 				</attribute>
+				<attribute qualifier="releaseDate" type="java.util.Date">
+					<modifiers read="true" write="true" optional="true"/>
+					<persistence type="property"/>
+				</attribute>
 
 			</attributes>
 		</itemtype>

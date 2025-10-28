@@ -16,6 +16,57 @@ public class DefaultToolsFacade implements ToolsFacade {
     public DefaultToolsFacade() {}
 
 
+    @Override
+    public List<ToolData> getAllTools() {
+        List<ToolsItemModel> tools = toolsService.getAllTools();
+        return tools.stream()
+                .map(tool -> dataMapper.map(tool, ToolData.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ToolData> getToolsByYear(int year) {
+        List<ToolsItemModel> tools = toolsService.getToolsByYear(year);
+        return tools.stream()
+                .map(tool -> dataMapper.map(tool, ToolData.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void saveTool(ToolData toolData) {
+
+//        ToolsItemModel model = dataMapper.map(toolData, ToolsItemModel.class);
+//        toolsService.saveTool(model);
+        ToolsItemModel model = new ToolsItemModel();
+        model.setCode(toolData.getCode());
+        model.setName(toolData.getName());
+        model.setDescription(toolData.getDescription());
+        model.setReleaseDate(toolData.getReleaseDate());
+        toolsService.saveTool(model);
+    }
+
+//    @Override
+//    public List<ToolData> getToolsByYear(int year) {
+//        return toolsService.getToolsByYear(year).stream()
+//                .map(toolConverter::convert)
+//                .collect(Collectors.toList());
+//    }
+//
+//    public void setToolReverseConverter(ToolReverseConverter toolReverseConverter) {
+//        this.toolReverseConverter = toolReverseConverter;
+//    }
+
+//    @Override
+//    public void saveTool(ToolData toolData) {
+////        ToolsItemModel model = new ToolsItemModel();
+////        model.setCode(toolData.getCode());
+////        model.setReleaseDate(toolData.getReleaseDate());
+////        model.setName(toolData.getName());
+////        model.setDescription(toolData.getDescription());
+//        ToolsItemModel model = toolReverseConverter.convert(toolData);
+//        toolsService.saveTool(model);
+//    }
+
     public void setToolsService(ToolsService toolsService) {
         this.toolsService = toolsService;
     }
@@ -24,11 +75,5 @@ public class DefaultToolsFacade implements ToolsFacade {
         this.dataMapper = dataMapper;
     }
 
-    @Override
-    public List<ToolData> getAllTools() {
-        List<ToolsItemModel> tools = toolsService.getAllTools();
-        return tools.stream()
-                .map(tool -> dataMapper.map(tool, ToolData.class))
-                .collect(Collectors.toList());
-    }
+
 }

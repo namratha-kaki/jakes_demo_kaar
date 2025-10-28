@@ -1,6 +1,23 @@
-<h2>Tools List</h2>
-<ul>
-  <li *ngFor="let tool of tools$ | async">
-    <strong>{{tool.name}}</strong> - {{tool.description}}
-  </li>
-</ul>
+
+<div *ngIf="(loading$ | async)">Loading...</div>
+
+<table class="tools-table">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Release Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tool of (tools$ | async)">
+      <td>{{ tool.code }}</td>
+      <td>{{ tool.name }}</td>
+      <td>{{ tool.description }}</td>
+      <td>
+        <input type="date" [value]="tool.releaseDate | date:'yyyy-MM-dd'" />
+      </td>
+    </tr>
+  </tbody>
+</table>
