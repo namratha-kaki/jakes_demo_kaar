@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<!--
+	The hybris platform provides one single Spring application context for beans located at the jalo layer.
+	Each extension can add beans to this context by specifying them at this configuration file.
+	 
+	You can use and/or redefine beans defined at configuration files of other extensions as well as
+	adding new one.
+		
+	If you want to locate this file at a different location or want to use several files for better,
+	structuring, please use the '<yourextension>.application-context' property at your project.properties file.
+	There you can specify a comma separated list of files where first is tried to find a file per classpath and
+	then per file system.
+
+	
+	If you want to configure beans for your web module please have a look at
+	your web/webroot/WEB-INF/<extname>-web-spring.xml.
+	-->
+	
+	<!--  Example how to override a manager -->
+	<!--
+	<bean id="core.productManager"   class="demojakesocc.jalo.DemojakesoccProductManager" 	init-method="init"	destroy-method="destroy" />
+	-->
+	
+	
+ 	<!--  Example how to configure the class to use for jalo session creation -->
+	<!--
+	<bean id="jalosession"   class="de.hybris.platform.jalo.JaloSessionFactory">
+		<property name="targetClassName" value="demojakesocc.jalo.DemojakesoccJaloSession"/>
+	</bean>
+	-->
+
+	
+	<!--  Example how to override an item  -->
+	<!-- 
+	<bean id="de.hybris.platform.jalo.product.Product" class="demojakesocc.jalo.DemojakesoccProduct" scope="prototype" />		
+ 	-->
+
+	<!--  
+	 Example how to register and use an AOP aspect 
+     Also see http://static.springframework.org/spring/docs/2.5.x/reference/aop.html	
+     -->
+	
+	<!-- 
+	<bean id="demojakesoccProfBean" class="demojakesocc.aop.DemojakesoccProfilingAspect"/>
+	<aop:config proxy-target-class="true">
+  		<aop:aspect id="demojakesoccProfAspect" ref="demojakesoccProfBean" >
+    	  <aop:pointcut id="profiledMethods" 
+	      	expression="execution(* getModificationTime(..))" />  	            
+	   		<aop:around pointcut-ref="profiledMethods" method="profile" />
+  		</aop:aspect>
+	</aop:config>
+	 -->
+
+	
+	<!-- some other examples of a pointcut that matches everything:
+
+    	  <aop:pointcut id="profiledMethods" 
+	      	expression="bean(de.hybris.platform.jalo.user.Customer) &amp;&amp; 
+	      	            !execution(* getPK(..))" />  	            
+	       <aop:pointcut id="profiledMethods" expression="execution(* *(..))" />	
+	  -->
+	
+	
+	<!-- Beans needed for sample code -->
+ 
+	
+	<!-- Sample Converters and Populators -->
+	<bean id="demojakesoccSampleAddressPopulator" class="demojakesocc.populators.SampleAddressPopulator" />
+
+	<bean id="demojakesoccSampleAddressConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass" value="demojakesocc.data.AddressData" />
+		<property name="populators">
+			<list>
+				<ref bean="demojakesoccSampleAddressPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="demojakesoccSampleUserPopulator" class="demojakesocc.populators.SampleUserPopulator">
+		<property name="addressConverter" ref="demojakesoccSampleAddressConverter" />
+	</bean>
+
+	<bean id="demojakesoccSampleUserConverter" parent="defaultPopulatingConverter">
+		<property name="targetClass" value="demojakesocc.data.UserData" />
+		<property name="populators">
+			<list>
+				<ref bean="demojakesoccSampleUserPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="demojakesoccSampleAddressReversePopulator" class="demojakesocc.populators.SampleAddressReversePopulator" />
+
+	<bean id="demojakesoccSampleAddressReverseConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass" value="de.hybris.platform.core.model.user.AddressModel" />
+		<property name="populators">
+			<list>
+				<ref bean="demojakesoccSampleAddressReversePopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="demojakesoccSampleUserReversePopulator" class="demojakesocc.populators.SampleUserReversePopulator">
+		<constructor-arg name="addressReverseConverter" ref="demojakesoccSampleAddressReverseConverter" />
+	</bean>
+
+	<!-- Sample Services -->
+	<bean id="demojakesoccSampleUserService" class="demojakesocc.services.impl.SampleUserServicesImpl" />
+	
+ 	<!-- Sample facades -->
+	<alias name="demojakesoccDefaultSampleFacades" alias="demojakesoccSampleFacades"/>
+	<bean id="demojakesoccDefaultSampleFacades" class="demojakesocc.facades.impl.DefaultSampleFacades">
+		<property name="userConverter" ref="demojakesoccSampleUserConverter" />
+		<property name="userReversePopulator" ref="demojakesoccSampleUserReversePopulator" />
+		<property name="sampleUserService" ref="demojakesoccSampleUserService" />
+	</bean>
+</beans>
