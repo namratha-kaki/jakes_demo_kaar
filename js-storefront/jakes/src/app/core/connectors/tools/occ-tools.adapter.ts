@@ -9,20 +9,23 @@ import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class OccToolsAdapter extends ToolsAdapter {
-  private baseUrl = '/demojakesocc/sample';
-  private accessToken = 'xYlchgoz5W43-_H4puGLKhFDL4g';
+  private readonly baseUrl = '/demojakesocc/sample';
+  private readonly accessToken = 'XZ8x17q-KTbBQ89iL_aiqAM_o64';
+  private readonly headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.accessToken}`,
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  });
 
-  constructor(private http: HttpClient, private converter: ConverterService) {
+  constructor(
+    private http: HttpClient,
+    private converter: ConverterService
+  ) {
     super();
   }
 
   getAll(): Observable<ToolData[]> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.accessToken}`,
-      'Accept': 'application/json'
-    });
-
-    return this.http.get<any[]>(`${this.baseUrl}/all`, { headers }).pipe(
+    return this.http.get<any[]>(`${this.baseUrl}/all`, { headers: this.headers }).pipe(
       map((response) =>
         response.map((item) =>
           this.converter.convert(item, TOOLS_NORMALIZER)
@@ -32,13 +35,28 @@ export class OccToolsAdapter extends ToolsAdapter {
   }
 
   getByYear(year: number): Observable<ToolData[]> {
-        const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.accessToken}`,
-      'Accept': 'application/json'
-    });
-    
-    return this.http.get<any[]>(`${this.baseUrl}/toolsByYear?year=${year}`, { headers }).pipe(
-      map(response => response.map(item => this.converter.convert(item, TOOLS_NORMALIZER)))
+    return this.http.get<any[]>(`${this.baseUrl}/toolsByYear?year=${year}`, { headers: this.headers }).pipe(
+      map((response) =>
+        response.map((item) =>
+          this.converter.convert(item, TOOLS_NORMALIZER)
+        )
+      )
+    );
+  }
+
+  saveTool(tool: ToolData): Observable<ToolData> {
+    console.log('Saving Tool');
+    console.log('Tool object:', tool);
+    console.log('Stringified:', JSON.stringify(tool, null, 2));
+
+    return this.http.post<any>(`${this.baseUrl}/save`, tool, {
+      headers: this.headers,
+      observe: 'response'
+    }).pipe(
+      map((response) => {
+        console.log('Response:', response);
+        return response.body;
+      })
     );
   }
 }

@@ -4,8 +4,7 @@ import com.jakes.jakescore.model.ToolsItemModel;
 import de.hybris.platform.servicelayer.model.ModelService;
 import de.hybris.platform.servicelayer.search.FlexibleSearchQuery;
 import de.hybris.platform.servicelayer.search.FlexibleSearchService;
-import org.springframework.transaction.annotation.Transactional;
-
+import de.hybris.platform.servicelayer.search.SearchResult;
 
 import java.util.List;
 
@@ -27,6 +26,15 @@ public class DefaultToolsDao implements ToolsDao {
         return flexibleSearchService.<ToolsItemModel>search(fsq).getResult();
     }
 
+    @Override
+    public ToolsItemModel findToolByCode(String code) {
+        final FlexibleSearchQuery query = new FlexibleSearchQuery(
+                "SELECT {PK} FROM {ToolsItem} WHERE {code}=?code"
+        );
+        query.addQueryParameter("code", code);
+        final SearchResult<ToolsItemModel> result = flexibleSearchService.search(query);
+        return result.getResult().isEmpty() ? null : result.getResult().get(0);
+    }
 
     @Override
     public void saveTool(ToolsItemModel tool) {

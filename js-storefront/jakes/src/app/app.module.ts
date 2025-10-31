@@ -15,13 +15,13 @@ import { ToolsListModule } from './tools-list/tools-list.module';
 import { toolsReducer } from './state/tools.reducer';
 import { ToolsEffects } from './state/tools.effects';
 import { ConfigModule } from '@spartacus/core';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolsListComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -32,13 +32,13 @@ import { ConfigModule } from '@spartacus/core';
     SpartacusModule,
     JakesParagraphModule,
     ToolsListModule,
-        ConfigModule.withConfig({
-routing: {
-    routes: {
-        product: { paths: ['product/:name/custom-route/:productCode'] }
-    }
-},
-
+    FormsModule,
+    ConfigModule.withConfig({
+      routing: {
+        routes: {
+          product: { paths: ['product/:name/custom-route/:productCode'] }
+        }
+      },
 })
   ],
   providers: [

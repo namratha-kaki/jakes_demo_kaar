@@ -1,7 +1,8 @@
-
 export interface ToolData {
   code: string;
   name: string;
   description?: string;
-  releaseDate?: string; 
+  releaseDate?: Date; 
+  dateChanged?: boolean;
+  
 }

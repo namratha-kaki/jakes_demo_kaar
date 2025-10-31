@@ -15,7 +15,6 @@ public class DefaultToolsFacade implements ToolsFacade {
 
     public DefaultToolsFacade() {}
 
-
     @Override
     public List<ToolData> getAllTools() {
         List<ToolsItemModel> tools = toolsService.getAllTools();
@@ -32,40 +31,37 @@ public class DefaultToolsFacade implements ToolsFacade {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public void saveTool(ToolData toolData) {
-
-//        ToolsItemModel model = dataMapper.map(toolData, ToolsItemModel.class);
-//        toolsService.saveTool(model);
-        ToolsItemModel model = new ToolsItemModel();
-        model.setCode(toolData.getCode());
-        model.setName(toolData.getName());
-        model.setDescription(toolData.getDescription());
-        model.setReleaseDate(toolData.getReleaseDate());
-        toolsService.saveTool(model);
-    }
-
-//    @Override
-//    public List<ToolData> getToolsByYear(int year) {
-//        return toolsService.getToolsByYear(year).stream()
-//                .map(toolConverter::convert)
-//                .collect(Collectors.toList());
-//    }
-//
-//    public void setToolReverseConverter(ToolReverseConverter toolReverseConverter) {
-//        this.toolReverseConverter = toolReverseConverter;
-//    }
-
 //    @Override
 //    public void saveTool(ToolData toolData) {
-////        ToolsItemModel model = new ToolsItemModel();
-////        model.setCode(toolData.getCode());
-////        model.setReleaseDate(toolData.getReleaseDate());
-////        model.setName(toolData.getName());
-////        model.setDescription(toolData.getDescription());
-//        ToolsItemModel model = toolReverseConverter.convert(toolData);
-//        toolsService.saveTool(model);
+//        ToolsItemModel existingTool = toolsService.getToolByCode(toolData.getCode());
+//
+//        if (existingTool != null) {
+//            existingTool.setName(toolData.getName());
+//            existingTool.setDescription(toolData.getDescription());
+//            existingTool.setReleaseDate(toolData.getReleaseDate());
+//            toolsService.saveTool(existingTool);
+//        } else {
+//            ToolsItemModel newTool = new ToolsItemModel();
+//            newTool.setCode(toolData.getCode());
+//            newTool.setName(toolData.getName());
+//            newTool.setDescription(toolData.getDescription());
+//            newTool.setReleaseDate(toolData.getReleaseDate());
+//            toolsService.saveTool(newTool);
+//        }
 //    }
+
+    @Override
+    public void saveTool(ToolData toolData) {
+        ToolsItemModel existingTool = toolsService.getToolByCode(toolData.getCode());
+
+        if (existingTool != null) {
+            dataMapper.map(toolData, existingTool);
+            toolsService.saveTool(existingTool);
+        } else {
+            ToolsItemModel newTool = dataMapper.map(toolData, ToolsItemModel.class);
+            toolsService.saveTool(newTool);
+        }
+    }
 
     public void setToolsService(ToolsService toolsService) {
         this.toolsService = toolsService;
@@ -74,6 +70,4 @@ public class DefaultToolsFacade implements ToolsFacade {
     public void setDataMapper(DataMapper dataMapper) {
         this.dataMapper = dataMapper;
     }
-
-
 }

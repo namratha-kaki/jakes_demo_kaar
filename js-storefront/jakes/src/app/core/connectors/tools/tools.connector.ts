@@ -11,7 +11,11 @@ export class ToolsConnector {
     return this.adapter.getAll();
   }
 
-    getByYear(year: number): Observable<ToolData[]> {
+  getByYear(year: number): Observable<ToolData[]> {
     return this.adapter.getByYear(year);
+  }
+
+  saveTool(tool: ToolData) {
+    return this.adapter.saveTool(tool);
   }
 }

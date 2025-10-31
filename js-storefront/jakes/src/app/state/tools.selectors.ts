@@ -2,7 +2,6 @@ import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { ToolsState } from './tools.reducer';
 
 export const selectToolsState = createFeatureSelector<ToolsState>('toolsState');
-
 export const selectAllTools = createSelector(selectToolsState, state => state.tools);
 export const selectLoading = createSelector(selectToolsState, state => state.loading);
 export const selectYears = createSelector(selectAllTools, tools => {

@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { CmsConfig, ConfigModule } from '@spartacus/core';
 import { ToolsListComponent } from './tools-list.component';
 
-
-
 @NgModule({
   declarations: [],
   imports: [
