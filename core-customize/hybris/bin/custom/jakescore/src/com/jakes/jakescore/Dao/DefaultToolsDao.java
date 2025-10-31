@@ -41,6 +41,11 @@ public class DefaultToolsDao implements ToolsDao {
         modelService.save(tool);
     }
 
+    @Override
+    public void removeTool(ToolsItemModel tool) {
+        modelService.remove(tool);
+    }
+
     public void setModelService(ModelService modelService) {
         this.modelService = modelService;
     }

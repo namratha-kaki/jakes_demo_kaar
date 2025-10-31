@@ -23,8 +23,39 @@
 					<modifiers read="true" write="true" optional="true"/>
 					<persistence type="property"/>
 				</attribute>
-
-
+			</attributes>
+		</itemtype>
+		<itemtype code="ToolsCleanupCronJob"
+				  autocreate="true"
+				  generate="true"
+				  extends="CronJob"
+				  jaloclass="com.jakes.jakescore.jalo.ToolsCleanupCronJob">
+			<attributes>
+				<attribute qualifier="dryRun" type="java.lang.Boolean" >
+					<modifiers/>
+					<persistence type="property"/>
+					<defaultvalue>Boolean.FALSE</defaultvalue>
+					<description>
+						If true, the job will only log tools that would be removed without actually deleting them
+					</description>
+				</attribute>
+				<attribute type="java.lang.Integer" qualifier="daysBeforeRemoval">
+					<modifiers/>
+					<persistence type="property"/>
+					<defaultvalue>Integer.valueOf(0)</defaultvalue>
+					<description>
+						Number of days after release date before tool is removed.
+						0 = remove immediately when date passes
+					</description>
+				</attribute>
+				<attribute type="java.lang.Integer" qualifier="batchSize">
+					<modifiers/>
+					<persistence type="property"/>
+					<defaultvalue>Integer.valueOf(100)</defaultvalue>
+					<description>
+						Maximum number of tools to process in one execution
+					</description>
+				</attribute>
 			</attributes>
 		</itemtype>
 	</itemtypes>

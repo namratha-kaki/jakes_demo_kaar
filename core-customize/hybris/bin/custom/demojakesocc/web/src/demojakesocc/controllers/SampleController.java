@@ -72,4 +72,20 @@ public class SampleController
 		final int queryYear = (year != null) ? year : 2025;
 		return toolsFacade.getToolsByYear(queryYear);
 	}
+
+	@DeleteMapping(value = "/delete/{code}", produces = {"application/json"})
+	public ResponseEntity<Map<String, String>> deleteTool(@PathVariable("code") final String code) {
+		try {
+			toolsFacade.removeTool(code);
+			Map<String, String> response = new HashMap<>();
+			response.put("message", "Tool with code " + code + " deleted successfully");
+			return new ResponseEntity<>(response, HttpStatus.OK);
+		} catch (Exception e) {
+			Map<String, String> errorResponse = new HashMap<>();
+			errorResponse.put("error", e.getMessage());
+			errorResponse.put("type", e.getClass().getSimpleName());
+			return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+		}
+	}
+
 }

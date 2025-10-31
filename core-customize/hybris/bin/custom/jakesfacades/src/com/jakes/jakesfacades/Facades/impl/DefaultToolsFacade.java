@@ -31,25 +31,6 @@ public class DefaultToolsFacade implements ToolsFacade {
                 .collect(Collectors.toList());
     }
 
-//    @Override
-//    public void saveTool(ToolData toolData) {
-//        ToolsItemModel existingTool = toolsService.getToolByCode(toolData.getCode());
-//
-//        if (existingTool != null) {
-//            existingTool.setName(toolData.getName());
-//            existingTool.setDescription(toolData.getDescription());
-//            existingTool.setReleaseDate(toolData.getReleaseDate());
-//            toolsService.saveTool(existingTool);
-//        } else {
-//            ToolsItemModel newTool = new ToolsItemModel();
-//            newTool.setCode(toolData.getCode());
-//            newTool.setName(toolData.getName());
-//            newTool.setDescription(toolData.getDescription());
-//            newTool.setReleaseDate(toolData.getReleaseDate());
-//            toolsService.saveTool(newTool);
-//        }
-//    }
-
     @Override
     public void saveTool(ToolData toolData) {
         ToolsItemModel existingTool = toolsService.getToolByCode(toolData.getCode());
@@ -62,6 +43,15 @@ public class DefaultToolsFacade implements ToolsFacade {
             toolsService.saveTool(newTool);
         }
     }
+
+    @Override
+    public void removeTool(String code) {
+        ToolsItemModel existingTool = toolsService.getToolByCode(code);
+        if (existingTool != null) {
+            toolsService.removeTool(existingTool);
+        }
+    }
+
 
     public void setToolsService(ToolsService toolsService) {
         this.toolsService = toolsService;

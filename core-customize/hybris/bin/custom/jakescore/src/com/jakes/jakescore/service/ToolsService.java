@@ -9,5 +9,6 @@ public interface ToolsService {
     List<ToolsItemModel> getToolsByYear(int year);
     void saveTool(ToolsItemModel tool);
     ToolsItemModel getToolByCode(String code);
+    void removeTool(ToolsItemModel tool);
 
 }

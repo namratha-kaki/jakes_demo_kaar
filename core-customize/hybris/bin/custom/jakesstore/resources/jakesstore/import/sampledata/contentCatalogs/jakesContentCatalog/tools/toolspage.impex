@@ -40,3 +40,12 @@ INSERT_UPDATE CMSLinkComponent; uid[unique=true]; name; url; target(code)[defaul
                               ; Tools2023Link ; Tools 2023 Link ; "/tools?year=2023" ; newWindow ;
                               ; Tools2024Link ; Tools 2024 Link ; "/tools?year=2024" ; newWindow ;
                               ; Tools2025Link ; Tools 2025 Link ; "/tools?year=2025" ; newWindow ;
+
+INSERT_UPDATE ServicelayerJob; code[unique=true]; springId; nodeGroup
+                             ; toolsCleanupJob ; toolsCleanupJob ; ;
+
+INSERT_UPDATE ToolsCleanupCronJob; code[unique=true]; job(code); sessionLanguage(isocode); active; singleExecutable; dryRun; daysBeforeRemoval; batchSize
+                                 ; toolsCleanupCronJob ; toolsCleanupJob ; en ; true ; false ; true ; 30 ; 100
+
+INSERT_UPDATE Trigger; cronJob(code)[unique=true]; cronExpression; active
+                     ; toolsCleanupCronJob ; 0 */2 * * * ? ; true

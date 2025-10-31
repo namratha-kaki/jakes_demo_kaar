@@ -10,5 +10,6 @@ public interface ToolsFacade {
     List<ToolData> getToolsByYear(int year);
 
     void saveTool(ToolData toolData);
+    void removeTool(String code);
 }
 
