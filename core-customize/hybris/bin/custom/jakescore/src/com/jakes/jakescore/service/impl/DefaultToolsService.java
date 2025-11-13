@@ -29,6 +29,7 @@ public class DefaultToolsService implements ToolsService {
     public void saveTool(ToolsItemModel tool) {
         toolsDao.saveTool(tool);
     }
+
     @Override
     @Transactional
     public void removeTool(ToolsItemModel tool) {

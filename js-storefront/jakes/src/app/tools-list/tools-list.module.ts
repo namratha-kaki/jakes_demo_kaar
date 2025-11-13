@@ -7,13 +7,14 @@ import { ToolsListComponent } from './tools-list.component';
   declarations: [],
   imports: [
     CommonModule,
-                 ConfigModule.withConfig(<CmsConfig>{
-              cmsComponents: {
-                CMSParagraphComponent: {
-                  component: ToolsListComponent
-                },
-              }
-            })
-  ]
+    ConfigModule.withConfig(<CmsConfig>{
+      cmsComponents: {
+        CMSParagraphComponent: {
+          component: ToolsListComponent,
+        },
+      },
+    }),
+  ],
 })
-export class ToolsListModule { }
+export class ToolsListModule {}
+

@@ -8,7 +8,6 @@
         <requires-extension name="jakesfacades"/>
         <requires-extension name="b2bocc"/>
 
-
         <coremodule generated="true" manager="com.jakes.jakesocc.jalo.JakesoccManager" packageroot="com.jakes.jakesocc"/>
 
     </extension>

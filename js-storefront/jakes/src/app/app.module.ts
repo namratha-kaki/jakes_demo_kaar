@@ -16,12 +16,13 @@ import { toolsReducer } from './state/tools.reducer';
 import { ToolsEffects } from './state/tools.effects';
 import { ConfigModule } from '@spartacus/core';
 import { FormsModule } from '@angular/forms';
-
+import { ToolsOccConfigModule } from './core/connectors/tools/tools-occ-config.module';
+import { CustomCartItemModule } from './components/custom-cart-item/custom-cart-item.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToolsListComponent,
+    ToolsListComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,9 @@ import { FormsModule } from '@angular/forms';
     SpartacusModule,
     JakesParagraphModule,
     ToolsListModule,
+    ToolsOccConfigModule,
     FormsModule,
+    CustomCartItemModule,
     ConfigModule.withConfig({
       routing: {
         routes: {
@@ -42,7 +45,7 @@ import { FormsModule } from '@angular/forms';
 })
   ],
   providers: [
-        { provide: ToolsAdapter, useClass: OccToolsAdapter },
+    { provide: ToolsAdapter, useClass: OccToolsAdapter },
     { provide: TOOLS_NORMALIZER, useClass: ToolsNormalizer, multi: true }
   ],
   bootstrap: [AppComponent]

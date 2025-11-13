@@ -17,9 +17,47 @@
     </bean>
     <bean id="toolsCleanUpJob" class="com.jakes.jakescore.cronjob.ToolsCleanUpJob">
         <property name="toolsService" ref="toolsService"/>
+        <property name="eventService" ref="eventService"/>
+        <property name="modelService" ref="modelService"/>
+        <property name="baseSiteService" ref="baseSiteService"/>
+
     </bean>
 
 
+    <bean id="toolsCleanupEmailProcessDefinitionResource"
+          class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">
+        <property name="resource" value="classpath:/jakescore/process/toolsCleanupEmailProcess.xml"/>
+    </bean>
+
+    <bean id="generateToolsCleanupEmailAction" parent="abstractGenerateEmailAction">
+        <property name="frontendTemplateName" value="toolsCleanupEmailTemplate"/>
+    </bean>
+
+    <bean id="toolsCleanupSendEmailAction"
+          class="de.hybris.platform.acceleratorservices.process.email.actions.SendEmailAction">
+        <property name="emailService" ref="emailService"/>
+    </bean>
+
+
+    <bean id="toolsCleanupRemoveEmailAction"
+          class="de.hybris.platform.acceleratorservices.process.email.actions.RemoveSentEmailAction">
+        <property name="modelService" ref="modelService"/>
+    </bean>
+
+    <bean id="toolsCleanupEmailEventListener"
+          class="com.jakes.jakescore.events.ToolsCleanupEmailEventListener"
+          parent="abstractAcceleratorSiteEventListener">
+        <property name="modelService" ref="modelService"/>
+        <property name="businessProcessService" ref="businessProcessService"/>
+        <property name="baseSiteService" ref="baseSiteService"/>
+        <property name="commonI18NService" ref="commonI18NService"/>
+    </bean>
+
+
+    <bean id="toolsCleanupEmailContext"
+          class="jakescore.context.ToolsCleanupEmailContext"
+          parent="abstractEmailContext"
+          scope="prototype"/>
 
 </beans>
 

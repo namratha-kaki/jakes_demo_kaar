@@ -1,0 +1,37 @@
+$contentCatalog = jakesContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Online])[default=$contentCatalog:Online]
+$lang = en
+
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+
+$emailPackageName = jakescore.context
+$jarEmailResource = jar:com.jakes.jakescore.constants.JakescoreConstants&/jakescore/import/emailtemplates
+$wideContent = CMSImageComponent,BannerComponent,SimpleBannerComponent,CMSLinkComponent,CMSParagraphComponent
+
+
+INSERT_UPDATE RendererTemplate; code[unique=true]; templateScript[lang=$lang,translator=de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]; contextClass; rendererType(code)[default='velocity']
+                              ; toolsCleanupEmailBody ; $jarEmailResource/ToolsCleanupEmailBody.vm ; $emailPackageName.ToolsCleanupEmailContext ;
+                              ; toolsCleanupEmailSubject  ; $jarEmailResource/ToolsCleanupEmailSubject.vm ; $emailPackageName.ToolsCleanupEmailContext ;
+
+INSERT_UPDATE EmailPageTemplate; $contentCV[unique=true]; uid[unique=true]; name; active; frontendTemplateName; subject(code); htmlTemplate(code); restrictedPageTypes(code)
+                               ;; toolsCleanupEmailTemplate ; Tools Cleanup Email Template ; true ; toolsCleanupEmailTemplate ; toolsCleanupEmailSubject ; toolsCleanupEmailBody ; EmailPage
+
+INSERT_UPDATE EmailPage; $contentCV[unique=true]; uid[unique=true]; name; masterTemplate(uid,$contentCV); defaultPage; approvalStatus(code)[default='approved']; fromEmail[lang=$lang]; fromName[lang=$lang]
+                       ;; ToolsCleanupEmail ; Tools Cleanup Email ; toolsCleanupEmailTemplate ; true ;; system@jakes.com ; Tools Cleanup Job
+
+
+INSERT_UPDATE ContentSlotName; name[unique=true]; template(uid,$contentCV)[unique=true][default='toolsCleanupEmailTemplate']; validComponentTypes(code)
+                             ; SiteLogo ;; $wideContent
+                             ; TopContent ;; $wideContent
+                             ; BottomContent ;; $wideContent
+
+INSERT_UPDATE ContentSlot; $contentCV[unique=true]; uid[unique=true]; name; active
+                         ;; ToolsCleanupEmailSiteLogoSlot ; Tools Cleanup Email Site Logo Slot ; true
+                         ;; ToolsCleanupEmailTopContentSlot ; Tools Cleanup Email Top Content Slot ; true
+                         ;; ToolsCleanupEmailBottomContentSlot ; Tools Cleanup Email Bottom Content Slot ; true
+
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique=true]; uid[unique=true]; position[unique=true]; pageTemplate(uid,$contentCV)[unique=true][default='toolsCleanupEmailTemplate']; contentSlot(uid,$contentCV)[unique=true]; allowOverwrite
+                                    ;; SiteLogo-toolsCleanupEmailTemplate ; SiteLogo ;; ToolsCleanupEmailSiteLogoSlot ; true
+                                    ;; TopContent-toolsCleanupEmailTemplate ; TopContent ;; ToolsCleanupEmailTopContentSlot ; true
+                                    ;; BottomContent-toolsCleanupEmailTemplate ; BottomContent ;; ToolsCleanupEmailBottomContentSlot ; true
+

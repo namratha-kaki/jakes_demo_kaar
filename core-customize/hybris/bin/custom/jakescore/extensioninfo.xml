@@ -8,9 +8,11 @@
 	<requires-extension name="b2bacceleratorservices"/>
         <requires-extension name="cms2"/>
         <requires-extension name="cms2lib"/>
-                  
+        <requires-extension name="acceleratorservices"/>
+
         <coremodule generated="true" manager="com.jakes.jakescore.jalo.JakescoreManager" packageroot="com.jakes.jakescore"/>
-                      
+
+
    </extension>
 
 </extensioninfo>
