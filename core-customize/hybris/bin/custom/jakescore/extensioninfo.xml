@@ -6,9 +6,13 @@
     <extension abstractclassprefix="Generated" classprefix="Jakescore" managername="JakescoreManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="jakescore">
 
 	<requires-extension name="b2bacceleratorservices"/>
-                  
+        <requires-extension name="cms2"/>
+        <requires-extension name="cms2lib"/>
+        <requires-extension name="acceleratorservices"/>
+
         <coremodule generated="true" manager="com.jakes.jakescore.jalo.JakescoreManager" packageroot="com.jakes.jakescore"/>
-                      
+
+
    </extension>
 
 </extensioninfo>

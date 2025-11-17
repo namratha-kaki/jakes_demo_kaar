@@ -214,8 +214,10 @@
     <extension name='jakesbackoffice' />
     <extension name='jakescore' />
     <extension name='jakesfacades' />
-    <extension name='jakesocc' />
+    <extension name='jakeocc' />
+    <!-- <extension name='customjakesocc' /> -->
     <extension name='jakesstore' />
+    
 
   </extensions>
 </hybrisconfig>

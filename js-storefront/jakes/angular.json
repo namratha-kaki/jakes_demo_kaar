@@ -86,7 +86,9 @@
               "browserTarget": "jakes:build:production"
             },
             "development": {
-              "browserTarget": "jakes:build:development"
+              "browserTarget": "jakes:build:development",
+              "proxyConfig": "proxy.conf.json"
+              
             }
           },
           "defaultConfiguration": "development"

@@ -1,0 +1,12 @@
+$contentCatalog = jakesContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Online])[default=$contentCatalog:Online]
+$lang = en
+
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+
+INSERT_UPDATE RendererTemplate; code[unique=true]; description[lang=$lang]
+                              ; toolsCleanupEmailBody ; "Tools Cleanup Email Body Template"
+                              ; toolsCleanupEmailSubject ; "Tools Cleanup Email Subject Template"
+
+
+

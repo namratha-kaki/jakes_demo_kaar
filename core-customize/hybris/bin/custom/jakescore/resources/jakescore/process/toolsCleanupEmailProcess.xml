@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process xmlns="http://www.hybris.de/xsd/processdefinition"
+         start="generateToolsCleanupEmail"
+         name="toolsCleanupEmailProcess"
+         processClass="com.jakes.jakescore.model.ToolsCleanupEmailProcessModel"
+         onError="error">
+
+    <!-- Step 1: Generate Email -->
+    <action id="generateToolsCleanupEmail" bean="generateToolsCleanupEmailAction">
+        <transition name="OK" to="sendEmail"/>
+        <transition name="NOK" to="error"/>
+    </action>
+
+    <!-- Step 2: Send Email -->
+    <action id="sendEmail" bean="toolsCleanupSendEmailAction">
+        <transition name="OK" to="removeSentEmail"/>
+        <transition name="NOK" to="failed"/>
+    </action>
+
+    <!-- Step 3: Remove Sent Email -->
+    <action id="removeSentEmail" bean="toolsCleanupRemoveEmailAction">
+        <transition name="OK" to="success"/>
+        <transition name="NOK" to="error"/>
+    </action>
+
+    <!-- Error Handling -->
+    <end id="error" state="ERROR">Something went wrong during Tools Cleanup Email Process.</end>
+    <end id="failed" state="FAILED">Could not send Tools Cleanup email.</end>
+    <end id="success" state="SUCCEEDED">Sent Tools Cleanup email successfully.</end>
+
+</process>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+ Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved.
+--><extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+           
+    
+    <extension abstractclassprefix="Generated" classprefix="Jakeocc" managername="JakeoccManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="jakeocc" usemaven="false">
+
+
+
+        <requires-extension name="webservicescommons"/>
+        <requires-extension name="jakesfacades"/>
+
+                         
+       
+      
+        
+        <coremodule generated="true" manager="jakeocc.jalo.JakeoccManager" packageroot="jakeocc"/>
+                      
+        
+        <webmodule jspcompile="false" webroot="/jakeocc"/>
+                					
+		
+        
+        	
+
+   
+    
+    </extension>
+              
+
+
+</extensioninfo>

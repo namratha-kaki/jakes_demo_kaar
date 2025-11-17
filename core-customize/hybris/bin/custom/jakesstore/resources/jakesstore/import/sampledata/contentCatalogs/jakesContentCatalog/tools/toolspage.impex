@@ -1,0 +1,48 @@
+
+$contentCatalog = jakesContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Online])[default=$contentCatalog:Online]
+
+INSERT_UPDATE ContentPage; uid[unique=true]; masterTemplate(uid,$contentCV); defaultPage; $contentCV
+                         ; toolsPage ; ContentPage1Template ; true ;
+
+INSERT_UPDATE CMSParagraphComponent; uid[unique=true]; visible; $contentCV
+                                   ; toolsParagraphComponent ; true ;
+
+INSERT_UPDATE ContentSlot; uid[unique=true]; $contentCV
+                         ; Section1 ;
+                         ; Section2A ;
+                         ; Section2B ;
+                         ; Section3 ;
+
+INSERT_UPDATE ContentSlotForPage; uid[unique=true]; page(uid,$contentCV); position; $contentCV; contentSlot(uid,$contentCV)
+                                ; tools-section1 ; toolsPage ; Section1 ;; Section1
+                                ; tools-section2a ; toolsPage ; Section2A ;; Section2A
+                                ; tools-section2b ; toolsPage ; Section2B ;; Section2B
+                                ; tools-section3 ; toolsPage ; Section3 ;; Section3
+
+INSERT_UPDATE CMSNavigationNode;&nodeRef;uid[unique=true];name;visible;parent(uid,$contentCV);$contentCV
+                               ;ToolsNavNode;ToolsNavNode;Tools;true;JakesCategoryNavNode;
+                               ;Tools2023NavNode;Tools2023NavNode;Tools 2023;true;ToolsNavNode;
+                               ;Tools2024NavNode;Tools2024NavNode;Tools 2024;true;ToolsNavNode;
+                               ;Tools2025NavNode;Tools2025NavNode;Tools 2025;true;ToolsNavNode;
+
+INSERT_UPDATE CMSLinkComponent;&linkRef;uid[unique=true];name;url;target(code)[default='newWindow'];$contentCV
+                              ;ToolsAllLink;ToolsAllLink;Tools All Link;/tools;newWindow;
+                              ;Tools2023Link;Tools2023Link;Tools 2023 Link;/tools?year=2023;newWindow;
+                              ;Tools2024Link;Tools2024Link;Tools 2024 Link;/tools?year=2024;newWindow;
+                              ;Tools2025Link;Tools2025Link;Tools 2025 Link;/tools?year=2025;newWindow;
+
+INSERT_UPDATE CMSNavigationEntry;uid[unique=true];$contentCV[unique=true];name;navigationNode(&nodeRef);item(&linkRef)
+                                ;ToolsAllNavEntry;;Tools All Entry;ToolsNavNode;ToolsAllLink;
+                                ;Tools2023NavEntry;;Tools 2023 Entry;Tools2023NavNode;Tools2023Link;
+                                ;Tools2024NavEntry;;Tools 2024 Entry;Tools2024NavNode;Tools2024Link;
+                                ;Tools2025NavEntry;;Tools 2025 Entry;Tools2025NavNode;Tools2025Link;
+
+INSERT_UPDATE ServicelayerJob; code[unique=true]; springId; nodeGroup
+                             ; toolsCleanupJob ; toolsCleanUpJob ; ;
+
+INSERT_UPDATE ToolsCleanupCronJob; code[unique=true]; job(code); sessionLanguage(isocode)[default=en]; active; singleExecutable; dryRun; daysBeforeRemoval; batchSize
+                                 ; toolsCleanupCronJob ; toolsCleanupJob ; en ; true ; false ; true ; 30 ; 100
+
+INSERT_UPDATE Trigger; cronJob(code)[unique=true]; cronExpression; active
+                     ; toolsCleanupCronJob ; 0 0 */2 * * ? ; true

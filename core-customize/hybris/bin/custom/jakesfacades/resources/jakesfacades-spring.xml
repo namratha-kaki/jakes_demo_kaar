@@ -7,6 +7,20 @@
            http://www.springframework.org/schema/beans/spring-beans.xsd
            http://www.springframework.org/schema/aop
            http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <bean id="fieldSetBuilder" class="de.hybris.platform.webservicescommons.mapping.impl.DefaultFieldSetBuilder"/>
+
+    <alias alias="dataMapper" name="defaultDataMapper"/>
+
+    <bean id="defaultDataMapper" class="de.hybris.platform.webservicescommons.mapping.impl.DefaultDataMapper">
+        <property name="fieldSetBuilder" ref="fieldSetBuilder"/>
+    </bean>
+
+    <bean id="toolsFacade" class="com.jakes.jakesfacades.Facades.impl.DefaultToolsFacade">
+        <property name="toolsService" ref="toolsService"/>
+        <property name="dataMapper" ref="defaultDataMapper"/>
+    </bean>
+
+
 
 </beans>
 

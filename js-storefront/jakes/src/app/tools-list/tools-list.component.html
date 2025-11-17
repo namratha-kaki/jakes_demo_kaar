@@ -1,0 +1,167 @@
+<div class="tools-container">
+  <div class="card add-tool-card">
+    <div class="card-header">
+      <h2 class="card-title">
+        <i class="bi bi-plus-circle"></i>
+        Add New Tool
+      </h2>
+    </div>
+    <div class="card-body">
+      <form #toolForm="ngForm" (ngSubmit)="onSaveTool()">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="code" class="form-label">Code *</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="code"
+              [(ngModel)]="newTool.code" 
+              name="code"
+              placeholder="e.g., TOOL001"
+              required
+            >
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="name" class="form-label">Name *</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="name"
+              [(ngModel)]="newTool.name" 
+              name="name"
+              placeholder="Tool name"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8 mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea 
+              class="form-control" 
+              id="description"
+              [(ngModel)]="newTool.description" 
+              name="description"
+              rows="3"
+              placeholder="Enter tool description..."
+            ></textarea>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label for="releaseDate" class="form-label">Release Date</label>
+            <input 
+              type="date" 
+              class="form-control" 
+              id="releaseDate"
+              [(ngModel)]="releaseDateString" 
+              name="releaseDate"
+            >
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end">
+          <button type="submit" class="btn btn-primary btn-lg" [disabled]="!toolForm.valid">
+            <i class="bi bi-save"></i>
+            Save Tool
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card tools-list-card">
+    <div class="card-header">
+      <h2 class="card-title">
+        <i class="bi bi-tools"></i>
+        Tools List
+      </h2>
+    </div>
+    <div class="card-body">
+      <div *ngIf="loading$ | async" class="loading-container">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-2">Loading tools...</p>
+      </div>
+
+      <div class="table-responsive" *ngIf="!(loading$ | async)">
+        <table class="table table-hover custom-table">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Release Date</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let tool of tools$ | async" [class.editing-row]="isEditing(tool)">
+              <td>
+                <span class="badge bg-secondary">{{ tool.code }}</span>
+              </td>
+              <td>
+                <strong>{{ tool.name }}</strong>
+              </td>
+              <td>
+                <span class="text-muted">{{ tool.description || 'No description' }}</span>
+              </td>
+              <td>
+                <div *ngIf="!isEditing(tool)" class="date-display">
+                  <i class="bi bi-calendar3"></i>
+                  <span>{{ formatDateForDisplay(tool.releaseDate) || 'Not set' }}</span>
+                </div>
+                <div *ngIf="isEditing(tool)" class="date-edit">
+                  <input 
+                    type="date" 
+                    class="form-control form-control-sm"
+                    [value]="getEditedDate(tool)"
+                    (change)="onDateInputChange(tool, $event)"
+                  >
+                </div>
+              </td>
+              <td class="text-center">
+                <div *ngIf="!isEditing(tool)">
+                  <button 
+                    class="btn btn-sm btn-outline-primary"
+                    (click)="enableDateEdit(tool)"
+                    title="Edit date"
+                  >
+                    <i class="bi bi-pencil"></i>
+                    Edit Date
+                  </button>
+                </div>
+                <div *ngIf="isEditing(tool)" class="btn-group btn-group-sm">
+                  <button 
+                    class="btn btn-success"
+                    (click)="saveDateEdit(tool)"
+                    title="Save changes"
+                  >
+                    <i class="bi bi-check-lg"></i>
+                    Save
+                  </button>
+                  <button 
+                    class="btn btn-outline-secondary"
+                    (click)="cancelDateEdit(tool)"
+                    title="Cancel"
+                  >
+                    <i class="bi bi-x-lg"></i>
+                    Cancel
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <div *ngIf="(tools$ | async)?.length === 0" class="empty-state">
+          <i class="bi bi-inbox"></i>
+          <p>No tools found. Add your first tool above!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
